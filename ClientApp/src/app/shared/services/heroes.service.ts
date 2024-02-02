@@ -30,7 +30,7 @@ export class HeroesService {
   ]).pipe(switchMap(() => this.httpClient.get<Hero[]>(this.url)));
 
   constructor() {
-    this.heroes$.subscribe();
+    //this.heroes$.subscribe();
     this.heroStatus$.subscribe();
     this.heroCreated$.subscribe();
   }
