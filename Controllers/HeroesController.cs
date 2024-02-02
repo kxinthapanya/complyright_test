@@ -31,7 +31,7 @@ public class HeroesController : ControllerBase
         return Ok(this.heroService.GetHeroes());
     }
 
-    //[TypeFilter(typeof(HeroValidateHeroIdFilterAttribute))]
+    [TypeFilter(typeof(HeroValidateHeroIdFilterAttribute))]
     [HttpGet("{id}")]
     public IActionResult GetHeroById(int id)
     {
@@ -39,7 +39,7 @@ public class HeroesController : ControllerBase
     }
 
 
-    //[TypeFilter(typeof(HeroValidateCreateHeroFilterAttribute))]
+    [TypeFilter(typeof(HeroValidateCreateHeroFilterAttribute))]
     [HttpPost]
     public IActionResult CreateHero([FromBody] HeroDto hero)
     {
@@ -48,7 +48,7 @@ public class HeroesController : ControllerBase
         return CreatedAtAction("GetHeroById", new { id = heroCreated.Id }, heroCreated);
     }
 
-    //[TypeFilter(typeof(HeroValidateHeroIdFilterAttribute))]
+    [TypeFilter(typeof(HeroValidateHeroIdFilterAttribute))]
     [HttpPut("{id}")]
     public IActionResult UpdateHero(int id)
     {
