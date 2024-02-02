@@ -1,0 +1,60 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  #createHero {
+    width: 400px;
+  }
+  
+  input {
+    padding: 3px;
+    box-shadow: 3px 3px 5px grey;
+    font-size: 14px;
+    font-weight: 600;
+    width: 300px;
+  }
+
+  select {
+    padding: 3px;
+    box-shadow: 3px 3px 5px grey;
+    font-size: 14px;
+    font-weight: 600;
+    width: 300px;
+  }
+
+  label {
+    color: #B4886B;
+    font-weight: bold;
+    display: block;
+  }
+  label:after { content: ": " }
+
+  label {
+    color: #B4886B;
+    font-weight: bold;
+    width: 130px;
+    float: left;
+  
+  }
+  label:after { content: ": " }
+
+ 
+  #button {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid gray;
+    background-color:#2263f0;
+    border-radius: 5px;
+    font: inherit;
+  }
+
+  #button:focus {
+    outline: 2px solid gray;
+    font-weight: bold;
+    color: white;
+  }
+
+  #button:hover {
+    background-color: #2263f0;
+    box-shadow: 3px 3px 5px grey;
+  }

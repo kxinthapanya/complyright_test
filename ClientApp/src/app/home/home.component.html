@@ -1,7 +1,14 @@
 <h1>Populate Table With List of Heroes</h1>
 
-<p>Delete Example data and make list dynamic using a angular service file that calls an api on HeroesController to get the heroes from db</p>
-<p>Also make the Add Hero link in nav go to a new page with a form that will add a new Hero to Heroes table in db and then redirect back to this page.  Do not worry about validating duplicate hero names</p>
+<p>
+  Delete Example data and make list dynamic using a angular service file that
+  calls an api on HeroesController to get the heroes from db
+</p>
+<p>
+  Also make the Add Hero link in nav go to a new page with a form that will add
+  a new Hero to Heroes table in db and then redirect back to this page. Do not
+  worry about validating duplicate hero names
+</p>
 <p>The delete button should flag the hero in the db as IsActive = 0</p>
 
 <table class="table table-hover">
@@ -15,13 +22,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Superman</td>
-      <td>Clark Kent</td>
-      <td>DC</td>
+    <tr *ngFor="let hero of heroesService.heroes$ | async">
+      <td>{{ hero.id }}</td>
+      <td>{{ hero.name }}</td>
+      <td>{{ hero.alias }}</td>
+      <td>{{ hero.brandName }}</td>
       <td>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="heroesService.updateHeroStatus$.next(hero.id!)"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   </tbody>

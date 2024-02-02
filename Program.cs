@@ -1,5 +1,7 @@
 using HeroTest.Models;
+using HeroTest.Service;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +15,12 @@ builder.Services.AddDbContext<SampleContext>(options =>
 
 });
 
+builder.Services.AddTransient<IHeroService, HeroService>();
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
     });
 
 var app = builder.Build();
@@ -38,10 +42,11 @@ app.UseStaticFiles();
 app.UseRouting();
 
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+//app.MapFallbackToFile("index.html"); ;
 
+app.MapControllers();
 app.Run();

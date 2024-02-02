@@ -1,0 +1,49 @@
+<form id="createHero" [formGroup]="form" (ngSubmit)="submit(form.value)">
+  <fieldset>
+    <label for="name">Name </label>
+    <input id="name" type="text" formControlName="name" />
+    <div>
+      <span
+        style="color: red"
+        *ngIf="form.controls.name.errors?.required && isSubmitted"
+      >
+        Name is required
+      </span>
+    </div>
+
+    <label for="alias">Alias </label>
+    <input id="alias" type="text" formControlName="alias" />
+    <div>
+      <span
+        style="color: red"
+        *ngIf="form.controls.alias.errors?.required && isSubmitted"
+      >
+        Alias is required
+      </span>
+    </div>
+
+    <label for="brand">Brand</label>
+
+    <select id="brand" formControlName="brands">
+      <option></option>
+      <option
+        *ngFor="let brand of brands; trackBy: trackByBrandId"
+        [ngValue]="brand.id"
+      >
+        {{ brand.name }}
+      </option>
+    </select>
+    <div>
+      <span
+        style="color: red"
+        *ngIf="form.controls.brands.errors?.required && isSubmitted"
+      >
+        Brand is required
+      </span>
+    </div>
+
+    <div>
+      <button id="button" btn btn-primary>Create</button>
+    </div>
+  </fieldset>
+</form>
