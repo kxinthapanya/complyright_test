@@ -24,13 +24,11 @@ export class HeroesService {
     switchMap((hero) => this.httpClient.put<Hero>(`${this.url}/${hero}`, hero))
   );
 
-  heroes$ = combineLatest([
-    this.httpClient.get<Hero[]>(this.url).pipe(startWith(this.url)),
-    this.heroStatus$.pipe(startWith(1)),
-  ]).pipe(switchMap(() => this.httpClient.get<Hero[]>(this.url)));
+  heroes$ = this.httpClient.get<Hero[]>(this.url); 
+
+
 
   constructor() {
-    //this.heroes$.subscribe();
     this.heroStatus$.subscribe();
     this.heroCreated$.subscribe();
   }
